@@ -1,0 +1,32 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# large data (download per README)
+data/
+
+.DS_Store
+
+# Local recordings, generated previews, and development notes
+output/
+AGENTS.md
+.agents/
+.codex/
+.claude/
+.env
+.env.*
+!.env.example
+*.log
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/

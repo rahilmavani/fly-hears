@@ -1,0 +1,21 @@
+[project]
+name = "flybrain"
+version = "0.1.0"
+description = "Spoken-digit decoding through a frozen fruit-fly connectome simulation"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "librosa>=1.0.0",
+    "numpy>=2.5.3",
+    "pandas>=3.0.5",
+    "pyarrow>=25.0.1",
+    "python-multipart>=0.0.32",
+    "scikit-learn>=1.9.1",
+    "scipy>=1.18.1",
+    "soundfile>=0.14.0",
+    "threadpoolctl>=3.6.0",
+    "uvicorn>=0.53.0",
+    "webrtcvad-wheels>=2.0.14,<3",
+]

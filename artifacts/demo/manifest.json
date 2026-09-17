@@ -1,0 +1,20 @@
+{
+  "format": 1,
+  "run": "v2",
+  "fsdd_commit": "26eb9aaf76e81b692f806f9140c2d2777410d7a1",
+  "files": {
+    "auditory.npz": "bcc63bff9c803e060071cac1522c6de6a16deae185969d06df8ce78e3228f47a",
+    "model.npz": "2b47ea33c628565f1c86e07e28c0c1177df8b0e7614a92d4075cffa96fcd5d24",
+    "recordings/0_theo_48.wav": "dd995a7d7cad782f91b66db0bcce3dff38d4ef7f94511b32a9940b63df4d613a",
+    "recordings/1_george_31.wav": "8f6303a40c85750570d9e0f8f824bad809c962fd4dad72f9cdbd61918981cc19",
+    "recordings/2_jackson_11.wav": "732d28a8186b5d096686212e40ba07e2151e2c901b7cd8f346b4ae41898443c7",
+    "recordings/3_jackson_28.wav": "4e6a183e17ccd2c0be000871787fcfa72de2316ddd516cd6691073452f3d323e",
+    "recordings/4_jackson_12.wav": "3ae3b3c1ae8fa88ecfde4abb01d739bc239ad4e786112d67b3cfa95f6ad0eb60",
+    "recordings/5_theo_45.wav": "69f9d5c2cfe0e74eb407b282f1955b512c42b94f067a51bff81e068278d3a19f",
+    "recordings/6_yweweler_18.wav": "96cd7880b5d1059117fb1866e4999b8f464b7c82b6dc4b19a9d6fb3d09c18a61",
+    "recordings/7_nicolas_30.wav": "de9fd231e8dafe824998ebb3d240c05cb554332b05a1abbacefbf6cab6f13dd5",
+    "recordings/8_george_19.wav": "1ecad5710e7d6a26022ee57c24a6c48d64f4d8f3c17f2d4f1dbe7611bb7f5adc",
+    "recordings/9_george_34.wav": "a84025482028042243a601c5cd6c6de5a7f5b4e022dafc95cd92740c2f5dcdd1",
+    "results.json": "7e8ac2496295af5cbb669bde87e21009807ddf64827dbf90c78b5dad29fcb280"
+  }
+}

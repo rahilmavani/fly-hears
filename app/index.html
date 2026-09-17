@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121412">
+  <title>The Fly Hears — watch your voice travel</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <div class="brand">
+      <div class="eyebrow"><span class="brand-dot"></span> A fruit-fly connectome experiment <span class="edition">№ 001</span></div>
+      <h1>The Fly <em>Hears.</em></h1>
+    </div>
+    <div class="intro-copy"><p>You’re asking a fruit fly to do speech recognition.<br><strong>Manage your expectations.</strong></p><span class="intro-caption">Say a digit. See what happens inside.</span></div>
+  </header>
+  <section class="input-strip panel" aria-label="Choose a recording">
+    <div class="record-area">
+      <button id="mic" type="button" disabled><svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 10v2a6.5 6.5 0 0 0 13 0v-2M12 18.5V22M8 22h8"/></svg><span id="mic-label">Record a digit</span><span class="record-dot" aria-hidden="true"></span></button>
+      <p id="hint" class="hint" aria-live="polite">One digit, 0–9. Up to 2 seconds.</p>
+      <div id="recording-review" class="recording-review" hidden>
+        <div id="mic-device" class="mic-device"></div>
+        <div><button id="listen-recording" type="button">Listen back</button><a id="save-recording" download>Save WAV</a></div>
+      </div>
+    </div>
+    <div class="sample-area">
+      <div class="sample-heading"><div class="eyebrow">Mic shy? Try a sample.</div><span>Ten digits. One tiny brain.</span></div>
+      <div id="samples" class="samples" aria-label="Sample recordings"></div>
+    </div>
+  </section>
+  <p id="error" class="error" role="alert" hidden></p>
+  <div class="workspace">
+  <section class="brain-panel panel" aria-labelledby="brain-title">
+    <div class="panel-heading">
+      <div><div class="eyebrow"><span class="section-number">01</span> Inside the circuit</div><h2 id="brain-title">A little sound. A lot going on.</h2></div>
+      <span id="replay-state" class="state">Waiting for a voice</span>
+    </div>
+    <div class="stage-labels">
+      <div><span class="stage-dot sensory"></span><strong>Sound enters</strong><span id="stage-0-count">Sensory neurons</span></div>
+      <div><span class="stage-dot first"></span><strong>Signals spread</strong><span id="stage-1-count">First connections</span></div>
+      <div><span class="stage-dot deeper"></span><strong>Network responds</strong><span id="stage-2-count">Deeper activity</span></div>
+    </div>
+    <div id="network-wrap" class="network-wrap">
+      <canvas id="network" role="img" aria-label="A schematic of sensory neurons and their downstream connections. Record a digit to replay their activity.">Recorded neuron activity is shown here. The counters below describe the replay.</canvas>
+      <div id="network-empty" class="network-empty"><span class="empty-symbol" aria-hidden="true">↝</span><strong>Your voice goes here.</strong><span>Record a digit or tap a sample.<br>We’ll follow the signal from there.</span></div>
+      <div id="neuron-tooltip" class="neuron-tooltip" hidden></div>
+    </div>
+    <div class="activity-summary">
+      <p id="network-meta">Recorded spikes · schematic layout</p>
+      <div><span><b id="active-count">0</b> neurons responded</span><span><b id="spike-count">0</b> spikes so far</span></div>
+    </div>
+    <div class="sound-heading"><span>Your voice · 32 sound bands</span><span>Synced to the replay</span></div>
+    <canvas id="coch" height="76" role="img" aria-label="The 32 audio frequency bands, with the current replay time marked."></canvas>
+    <div class="transport">
+      <button id="play" class="button primary" type="button" disabled>Play</button>
+      <button id="restart" class="button" type="button" disabled aria-label="Replay from the beginning">↺ Replay</button>
+      <label class="speed-label" for="speed">Playback
+        <select id="speed">
+          <option value="0.1">10× slower</option>
+          <option value="0.05">20× slower</option>
+          <option value="0.025">40× slower</option>
+          <option value="1">Simulation speed</option>
+        </select>
+      </label>
+      <output id="time-label" for="seek">0 / 300 ms</output>
+    </div>
+    <label class="sr-only" for="seek">Replay position in milliseconds of simulated time</label>
+    <input id="seek" type="range" min="0" max="300" step="0.5" value="0" disabled>
+    <div class="timeline-labels"><span>Sound enters</span><span>300 ms of simulated time</span></div>
+  </section>
+  <section id="fly-panel" class="result-panel panel" data-mood="idle" aria-labelledby="result-title">
+    <div class="fly-heading"><div class="eyebrow" id="result-title"><span class="section-number">02</span> The resident expert</div><span class="fly-status" id="fly-status">On standby</span></div>
+    <div class="fly-stage">
+      <span class="specimen-tag">D. melanogaster<span>Small. Opinionated.</span></span>
+      <svg class="fly-illustration" viewBox="0 0 400 280" role="img" aria-label="An illustrated fruit fly with red compound eyes and translucent wings">
+        <defs>
+          <radialGradient id="body-gold" cx="35%" cy="25%" r="80%"><stop stop-color="#f9d685"/><stop offset=".55" stop-color="#c9954c"/><stop offset="1" stop-color="#725033"/></radialGradient>
+          <radialGradient id="eye-red" cx="32%" cy="26%" r="85%"><stop stop-color="#ff9c79"/><stop offset=".3" stop-color="#f45e46"/><stop offset=".7" stop-color="#b72e29"/><stop offset="1" stop-color="#67231f"/></radialGradient>
+          <linearGradient id="wing-glass" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#c1dad3" stop-opacity=".14"/><stop offset=".55" stop-color="#e2f0dc" stop-opacity=".35"/><stop offset="1" stop-color="#e9f9f1" stop-opacity=".65"/></linearGradient>
+          <pattern id="eye-facets" width="8" height="7" patternUnits="userSpaceOnUse"><path d="M2 0h4l2 3.5L6 7H2L0 3.5Z" fill="none" stroke="#61221e" stroke-opacity=".25" stroke-width=".7"/></pattern>
+          <clipPath id="abdomen-clip"><ellipse cx="166" cy="154" rx="49" ry="33" transform="rotate(-28 166 154)"/></clipPath>
+        </defs>
+        <ellipse class="fly-shadow" cx="201" cy="248" rx="85" ry="10" fill="#080b09" opacity=".45"/>
+        <g class="fly-character">
+          <g class="fly-legs" fill="none" stroke="#b59666" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m186 156-48 26-42 39-13 1M197 160l-27 46-1 37-10 5M220 155l24 43 27 22 13-2"/>
+            <path d="m190 145-47-2-33 17-15-3M210 150l-10 49 27 35 12 2M228 148l38 31 28-5 11-9"/>
+          </g>
+          <ellipse cx="166" cy="154" rx="49" ry="33" transform="rotate(-28 166 154)" fill="url(#body-gold)"/>
+          <g clip-path="url(#abdomen-clip)" fill="none" stroke="#493c2b" stroke-width="9">
+            <path d="M114 125q28 28 29 75M130 116q35 31 35 78M151 106q34 32 33 80"/>
+          </g>
+          <path d="M123 173q11 6 22 5" fill="none" stroke="#f4d596" stroke-opacity=".5" stroke-linecap="round"/>
+          <g class="fly-wing wing-back">
+            <path d="M204 142C188 111 153 43 120 41c-34-1-20 40 7 64 24 21 52 34 77 37Z" fill="url(#wing-glass)" stroke="#c5e2d9" stroke-opacity=".58" stroke-width="1.2"/>
+            <g fill="none" stroke="#d6ebe3" stroke-opacity=".35" stroke-width=".9"><path d="M201 139 117 48m63 79-43-67m34 60-51-20m27-28-19 13"/></g>
+          </g>
+          <ellipse cx="207" cy="141" rx="32" ry="30" transform="rotate(-25 207 141)" fill="url(#body-gold)"/>
+          <path d="m191 125 5 20m5-25 7 23m6-22 5 16" stroke="#564734" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>
+          <g class="fly-wing wing-front">
+            <path d="M206 149C178 128 114 58 78 68c-33 10-4 47 27 63 35 19 73 25 101 18Z" fill="url(#wing-glass)" stroke="#d7ede4" stroke-opacity=".72" stroke-width="1.2"/>
+            <g fill="none" stroke="#e0f1e8" stroke-opacity=".43" stroke-width="1"><path d="M201 147 79 76m113 65-81-52m61 45-63-7m-7-38 3 27m33-7-4 17"/></g>
+          </g>
+          <g class="fly-head">
+            <ellipse cx="247" cy="133" rx="32" ry="29" transform="rotate(-15 247 133)" fill="url(#body-gold)"/>
+            <ellipse cx="267" cy="121" rx="18" ry="25" transform="rotate(-16 267 121)" fill="url(#eye-red)"/>
+            <ellipse cx="267" cy="121" rx="18" ry="25" transform="rotate(-16 267 121)" fill="url(#eye-facets)"/>
+            <ellipse cx="235" cy="137" rx="23" ry="29" transform="rotate(-20 235 137)" fill="url(#eye-red)"/>
+            <ellipse cx="235" cy="137" rx="23" ry="29" transform="rotate(-20 235 137)" fill="url(#eye-facets)"/>
+            <ellipse cx="227" cy="125" rx="6" ry="10" transform="rotate(24 227 125)" fill="#ffe5c7" opacity=".37"/>
+            <ellipse cx="264" cy="110" rx="4" ry="6" fill="#ffe5c7" opacity=".38"/>
+            <g class="fly-antennae" fill="none" stroke="#d2b87f" stroke-width="2" stroke-linecap="round"><path d="m269 137 20-8 8-15m-27 30 25 3 12-8"/><path d="m293 123 10-2m-9-3 6-8m4 31 8 2" stroke-width="1"/></g>
+            <ellipse cx="272" cy="151" rx="5" ry="7" transform="rotate(-32 272 151)" fill="#624932"/>
+          </g>
+          <g fill="none" stroke="#e3c48d" stroke-width="1" stroke-linecap="round" opacity=".65"><path d="m177 117-3-7m12 2 1-7m10 5 3-7m-68 47-8-2m7 12-8 2m47 22-2 7m16-12 1 7"/></g>
+        </g>
+        <g class="listening-marks" fill="none" stroke="#f0bc69" stroke-width="2" stroke-linecap="round"><path d="M310 111q12 10 7 25m7-35q20 16 12 41m1-51q28 22 18 58"/></g>
+      </svg>
+      <span class="fly-caption">30,000 simulated neurons. Zero qualifications.</span>
+    </div>
+    <div class="speech-bubble">
+      <div class="result-copy"><span class="eyebrow">Best guess</span><p id="fly-quip">One digit.<br>I’m all antennae.</p></div>
+      <div id="digit" class="digit dim" aria-live="polite" aria-label="Prediction not revealed">?</div>
+    </div>
+    <p id="result-note" class="result-note">The guess appears when the replay ends.</p>
+    <div class="score-area"><div id="bars" class="bars" aria-label="Digit scores after the replay"></div><div class="score-label">Reader scores · digits 0–9</div></div>
+    <p class="accuracy-note">Experimental. Accuracy varies with your voice and mic.</p>
+  </section>
+  </div>
+  <div class="page-footer">
+  <details class="about">
+    <summary>How does this little thing work? <span aria-hidden="true">↗</span></summary>
+    <div class="about-content">
+    <p>Each flash marks a recorded spike from this simulation. The view shows a selection of active neurons, arranged by their distance from the sensory inputs. Lines are real connections from the selected fly network. The layout is a schematic, not a reconstruction of the brain’s shape.</p>
+    <p>Signals on a line show a firing neuron influencing a connected neuron; they do not prove which input made that next neuron fire. The digit is computed from the completed simulation and revealed when the replay ends.</p>
+    <p>The network contains 30,000 simulated neurons. Its connections stay fixed; a trained reader uses activity from 6,000 neurons to predict a digit. Sample recordings come from the training dataset.</p>
+    <div class="eyebrow">This model’s benchmark · speakers excluded from training</div>
+    <div id="nums" class="nums"></div>
+    <p class="benchmark-note">The noisy test uses artificial background noise. These scores do not measure your laptop mic or EarPods; those need separate recordings. The displayed samples were used to train the final demo reader.</p>
+    <p>A separate speech check rejects quiet or non-speech recordings before prediction. It can miss quiet speech or accept some noises. The saved benchmark measures the digit reader, before this check.</p>
+    <p>Wiring: <a href="https://male-cns.janelia.org" target="_blank" rel="noreferrer">MaleCNS v1.0</a>, HHMI Janelia and collaborators, CC BY. Simulation parameters follow Shiu et al. 2024.</p>
+    </div>
+  </details>
+  <footer><span class="footer-dot"></span> Real fly wiring. Simulated activity. A small trained reader.</footer>
+  </div>
+</main>
+</body>
+</html>

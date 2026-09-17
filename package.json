@@ -1,0 +1,11 @@
+{
+  "name": "the-fly-hears-ui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/replay.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

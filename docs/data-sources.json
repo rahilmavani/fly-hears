@@ -1,0 +1,12 @@
+{
+  "connectome": "MaleCNS v1.0, CC BY 4.0",
+  "source": "https://male-cns.janelia.org/download/",
+  "raw_files": {
+    "annotations.feather": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+    "neurotransmitters.feather": "95c9289220663abeb3409f3ad9e5a7f8a53f8093f5139d15502cd08da8879621",
+    "weights.feather": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1"
+  },
+  "graph_sha256": "bcc63bff9c803e060071cac1522c6de6a16deae185969d06df8ce78e3228f47a",
+  "graph_note": "Bundled graph is the exact graph used for v2. Rebuilding with scripts.subgraph may change selected neurons or serialization; train a new run against the rebuilt graph.",
+  "fsdd_commit": "26eb9aaf76e81b692f806f9140c2d2777410d7a1"
+}
