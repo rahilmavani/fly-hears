@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: >-
+  If you use The Fly Hears, please cite this software using the metadata below.
+  Please also cite the underlying datasets and relevant research listed in the
+  README and THIRD_PARTY_NOTICES.md.
+type: software
+title: The Fly Hears
+authors:
+  - family-names: Mavani
+    given-names: Rahil
+    website: https://github.com/rahilmavani
+version: 0.1.0
+repository-code: https://github.com/rahilmavani/fly-hears
+license: MIT
+abstract: >-
+  A local spoken-digit classification experiment that drives a frozen simulation
+  of a selected fruit-fly connectome with audio features and trains a
+  logistic-regression reader on its activity. Includes an interactive spike
+  replay, a pretrained demo, and speaker-separated evaluation against scrambled
+  wiring and audio-feature controls. Bundled data and model artifacts have
+  separate licenses documented in THIRD_PARTY_NOTICES.md.
+keywords:
+  - connectome
+  - drosophila
+  - reservoir computing
+  - speech recognition
+  - neuroscience
+references:
+  - type: data
+    title: MaleCNS
+    version: "1.0"
+    authors:
+      - name: FlyEM at HHMI Janelia Research Campus and collaborators
+    url: https://male-cns.janelia.org/
+    license: CC-BY-4.0
+  - type: data
+    title: Free Spoken Digit Dataset
+    authors:
+      - family-names: Jackson
+        given-names: Zohar
+      - name: FSDD contributors
+    repository-code: https://github.com/Jakobovski/free-spoken-digit-dataset
+    commit: 26eb9aaf76e81b692f806f9140c2d2777410d7a1
+    license: CC-BY-SA-4.0

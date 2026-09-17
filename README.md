@@ -51,17 +51,17 @@ The fly illustration is a mascot. The neuron layout is a schematic, while its fl
 
 ## How well does it work?
 
+The real and scrambled circuits are nearly tied. This run does not show a clear advantage for the biological wiring. Only one scrambled graph was evaluated.
+
 The saved `v2` experiment evaluates 3,000 recordings from six speakers. Each speaker is tested using a reader trained on the other five.
 
 | Model | Clean recordings | Synthetic background noise |
 |---|---:|---:|
-| Fly wiring + reader | **70.0%** | **68.2%** |
+| Fly wiring + reader | 70.0% | 68.2% |
 | Scrambled wiring + reader | 69.7% | 70.0% |
 | Audio features + reader | 66.9% | 67.8% |
 
 [Raw results, per-speaker scores, and confusion matrices](artifacts/demo/results.json) · [Evaluation protocol](MODEL_CARD.md#evaluation)
-
-The real and scrambled circuits are nearly tied. This run does not show a clear advantage for the biological wiring. Only one scrambled graph was evaluated.
 
 A few things to expect:
 
@@ -100,6 +100,8 @@ Use Node.js 22 or newer for the second command. Tests cover batch/live consisten
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development notes and [MODEL_CARD.md](MODEL_CARD.md) for the assumptions behind the model.
 
 ## Credits and licenses
+
+To cite this software, use [CITATION.cff](CITATION.cff). Please also credit the underlying datasets and research relevant to your work:
 
 - **Brain wiring:** [MaleCNS v1.0](https://male-cns.janelia.org/), from HHMI Janelia’s FlyEM team and collaborators at Cambridge, MRC LMB, and Google Research. [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - **Spoken digits:** [Free Spoken Digit Dataset](https://github.com/Jakobovski/free-spoken-digit-dataset), by Zohar Jackson and contributors. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).

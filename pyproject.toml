@@ -1,5 +1,5 @@
 [project]
-name = "flybrain"
+name = "fly-hears"
 version = "0.1.0"
 description = "Spoken-digit decoding through a frozen fruit-fly connectome simulation"
 readme = "README.md"
